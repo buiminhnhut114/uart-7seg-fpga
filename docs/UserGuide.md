@@ -16,7 +16,7 @@ Tài liệu này hướng dẫn cài đặt Quartus, nạp code lên DE2 và ch�
 3. Nhấn **Add File…** và chọn `output_files/project.sof`.  
 4. Nhấn **Start** để nạp.  
 
-![Hình 1.1: Nạp file .sof lên Board DE2](images/fig1_1.png)
+![Hình 1.1: Nạp file .sof lên Board DE2](images/Hinh1.1.png)
 
 ## C.3 Chạy ứng dụng GUI và cấu hình COM port
 
@@ -31,5 +31,5 @@ Tài liệu này hướng dẫn cài đặt Quartus, nạp code lên DE2 và ch�
    - **Flow control**: None  
 5. Nhấn **Connect** để mở kết nối tới FPGA. Khi thành công, nút **Disconnect** sẽ sáng lên và khung log sẽ hiện dòng “[MSG] Connected to COMx”.
 
-![Hình 1.2: Giao diện GUI và cấu hình COM port](images/fig1_2.png)
+![Hình 1.2: Giao diện GUI và cấu hình COM port](images/Hinh1_2.png)
 
