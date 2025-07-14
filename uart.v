@@ -21,7 +21,7 @@
 	.s_tick(s_tick)
     );
 	 
-	 uart_rx #(.DBIT(DBIT),.SB_TICK(SB_TICK)) m1 
+	 uart_rx #(.DBIT(DBIT),.SB_TICK(SB_TICK)) m1 //DBIT=data bits , SB_TICK=ticks for stop bit (16 for 1 bit ,32 for 2 bits)
 	(
 		.clk(clk),
 		.rst_n(rst_n),

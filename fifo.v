@@ -17,13 +17,13 @@ module fifo
 	 reg[B-1:0] array_reg[2**W-1:0];
 
 	 
-
+	 //register file operation
 	 always @(posedge clk) begin
 		if(wr && !full && !(wr&&rd&&empty)) array_reg[wr_ptr]=wr_data;
 	 end
 	 assign rd_data=array_reg[rd_ptr];
 	 
-	
+	 //fifo operation
 	 always @(posedge clk,negedge rst_n) begin
 		if(!rst_n) begin
 			rd_ptr=0;

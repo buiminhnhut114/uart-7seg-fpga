@@ -1,5 +1,5 @@
 module baud_generator
-#(parameter N = 326,             
+#(parameter N = 326,              // <<—  50 MHz @ 9600 Bd
   parameter N_width = 9)
 (
     input  wire clk,
