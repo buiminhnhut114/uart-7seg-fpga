@@ -36,7 +36,7 @@ https://github.com/buiminhnhut114/uart-banner-fpga/tree/main/simulation
 ## Phụ lục C. Hướng dẫn sử dụng
 
 Hướng dẫn cài đặt Quartus, nạp code lên DE2 và chạy ứng dụng Windows Forms có tại:  
-https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/docs/UserGuide.pdf
+https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/docs/UserGuide.md
 
 - **C.1** Cài đặt Quartus II 13.0 SP1  
 - **C.2** Nạp file `.sof` lên Board DE2  
