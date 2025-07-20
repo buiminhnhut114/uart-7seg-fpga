@@ -1,46 +1,76 @@
-`timescale 1ns / 1ps
+`timescale 1ns/1ps
+module uart #(
+  parameter CLOCK_FREQ = 50_000_000,  // 50 MHz
+  parameter BAUD       = 9600,        // baud rate
+  parameter DBIT       = 8,           // data bits
+  parameter SB_TICK    = 16           // oversampling ticks per stop bit
+)(
+  input  wire              clk,
+  input  wire              rst_n,
 
-   module uart
-	#(parameter DBIT=8,SB_TICK=16,DVSR=326,DVSR_WIDTH=9,FIFO_W=2)
-	(
-	input clk,rst_n,
-	input rd_uart,
-	input rx,
-	output[7:0] rd_data,
-	output rx_empty
-    );
+  // RX side
+  input  wire              rx,
+  output wire [DBIT-1:0]   rx_data,
+  output wire              rx_valid,
 
-	 wire s_tick,rx_done_tick,empty;
-	 wire[7:0] dout,rd_data_tx;
-	 
-	 
-	baud_generator #(.N(DVSR),.N_width(DVSR_WIDTH)) m0
-	(
-	.clk(clk),
-	.rst_n(rst_n),
-	.s_tick(s_tick)
-    );
-	 
-	 uart_rx #(.DBIT(DBIT),.SB_TICK(SB_TICK)) m1 //DBIT=data bits , SB_TICK=ticks for stop bit (16 for 1 bit ,32 for 2 bits)
-	(
-		.clk(clk),
-		.rst_n(rst_n),
-		.rx(rx),
-		.s_tick(s_tick),
-		.rx_done_tick(rx_done_tick),
-		.dout(dout)
-    );
-	 fifo #(.W(FIFO_W),.B(DBIT)) m2
-	(
-		.clk(clk),
-		.rst_n(rst_n),
-		.wr(rx_done_tick),
-		.rd(rd_uart),
-		.wr_data(dout),
-		.rd_data(rd_data),
-		.full(),
-		.empty(rx_empty)
-    );
-	
+  // TX side
+  input  wire              tx_start,
+  input  wire [DBIT-1:0]   tx_data,
+  output wire              tx,
+  output wire              tx_done
+);
+
+  //==================================================================
+  // 1) Baud‐rate generator
+  //==================================================================
+  localparam integer DIV = CLOCK_FREQ / BAUD;
+  reg [31:0] cnt;
+  reg        baud_tick;
+
+  always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      cnt       <= 0;
+      baud_tick <= 0;
+    end
+    else if (cnt == DIV/2) begin
+      cnt       <= 0;
+      baud_tick <= 1;
+    end
+    else begin
+      cnt       <= cnt + 1;
+      baud_tick <= 0;
+    end
+  end
+
+  //==================================================================
+  // 2) UART Receiver
+  //==================================================================
+  uart_rx #(
+    .DBIT    (DBIT),
+    .SB_TICK (SB_TICK)
+  ) u_rx (
+    .clk          (clk),
+    .rst_n        (rst_n),
+    .rx           (rx),
+    .s_tick       (baud_tick),
+    .dout         (rx_data),
+    .rx_done_tick (rx_valid)
+  );
+
+  //==================================================================
+  // 3) UART Transmitter
+  //==================================================================
+  uart_tx #(
+    .DBIT    (DBIT),
+    .SB_TICK (SB_TICK)
+  ) u_tx (
+    .clk          (clk),
+    .rst_n        (rst_n),
+    .s_tick       (baud_tick),
+    .tx_start     (tx_start),
+    .din          (tx_data),
+    .tx           (tx),
+    .tx_done_tick (tx_done)
+  );
 
 endmodule
