@@ -14,7 +14,7 @@ https://github.com/buiminhnhut114/uart-banner-fpga
 | A.3 | `uart_rx.v`          | Module nhận UART                             | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/uart_rx.v)   |
 | A.4 | `uart_tx.v`          | Module truyền UART                           | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/uart_tx.v)   |
 | A.5 | `fifo.v`             | FIFO độ sâu 16 byte trên BRAM                | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/fifo.v)      |
-| A.6 | `rotating_LED.v`     | FSM điều khiển banner 7-seg                  | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/rotating_LED.v) |
+| A.6 | `led_function.v`     | FSM điều khiển banner 7-seg                  | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/rotating_LED.v) |
 | A.7 | `sevenseg_router.v`  | Giải mã giá trị thành mã 7-seg               | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/sevenseg_router.v) |
 | A.8 | `LED_mux.v`          | Bộ đa chọn (multiplexer) hiển thị LED/7-seg   | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/LED_mux.v)   |
 | A.9 | `uart.v`             | Module UART chính (tích hợp UART Rx & Tx)    | [Xem trên GitHub](https://github.com/buiminhnhut114/uart-banner-fpga/blob/main/uart.v)      |
