@@ -41,7 +41,7 @@
    - **Parity**: None  
    - **Flow control**: None  
 
-   ![Giao diện UI Terminal và cấu hình COM port](images/fig1_2.png)
+   ![Giao diện UI Terminal và cấu hình COM port](fig1_2.png)
 
 3. Nhấn **Connect** để mở kênh UART. Khi kết nối thành công, bạn sẽ thấy log thông báo ở ô log bên dưới.
 
