@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module tb_rotating_LED;
+module tb_led_function;
 
   //================================================================
   // PARAMETERS & SIGNAL DECLARATION
@@ -19,7 +19,7 @@ module tb_rotating_LED;
   //================================================================
   // DUT INSTANTIATION
   //================================================================
-  rotating_LED #(.turns(turns)) uut (
+  led_function #(.turns(turns)) uut (
     .clk   (clk),
     .rst_n (rst_n),
     .rx    (rx),
