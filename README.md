@@ -1,6 +1,7 @@
 # PHỤC LỤC
 
 ---
+Keywords: UART FPGA, Verilog HDL, 7-segment display, Cyclone II DE2 board, FPGA projects, digital design, serial communication, FIFO buffer.FPGA simulation, ModelSim testbench, UART verification, Verilog testbench, digital system verification.Quartus II tutorial, FPGA board programming, Windows Forms UART control, Cyclone II FPGA, USB-RS232 communication.
 
 ## Phụ lục A. Mã nguồn Verilog
 
